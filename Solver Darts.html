@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Solver Darts - Kalkulator</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #000000, #111111, #222222);
+    color: #ffffff;
+    margin: 0;
+    padding: 30px;
+    min-height: 100vh;
+    animation: fadeIn 1s ease-in;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  h2 {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 30px;
+    font-weight: 300;
+    letter-spacing: 1px;
+  }
+
+  .board {
+    display: flex;
+    width: 100%;
+    gap: 55px;
+    margin-bottom: 30px;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;    
+  }
+
+  .ring {
+    background: linear-gradient(145deg, #333333, #444444);
+    padding: 20px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 160px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    border: 1px solid #555555;
+    transition: all 0.2s ease;
+  }
+
+  .ring:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    border-color: #777777;
+  }
+
+  .ring label {
+    font-weight: 500;
+    color: #ffffff;
+    margin-bottom: 5px;
+  }
+
+  select, input {
+    padding: 8px;
+    border-radius: 6px;
+    border: none;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  select {
+    cursor: pointer;
+    background: #222222;
+    color: #ffffff;
+    border: 1px solid #555555;
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 1rem;
+    width: 100%;
+    transition: all 0.2s ease;
+  }
+
+  select:focus {
+    outline: none;
+    border-color: #888888;
+    box-shadow: 0 0 5px rgba(136, 136, 136, 0.3);
+  }
+
+  select:hover {
+    background: #333333;
+  }
+
+  input[type="number"] {
+    background: #222222;
+    color: #ffffff;
+    border: 1px solid #555555;
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+  }
+
+  input[type="number"]:focus {
+    outline: none;
+    border-color: #888888;
+    box-shadow: 0 0 5px rgba(136, 136, 136, 0.3);
+  }
+
+  input[type="number"]:hover {
+    background: #333333;
+  }
+
+  button {
+    padding: 12px 20px;
+    margin: 10px 5px 0 0;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    text-transform: none;
+    letter-spacing: 0.5px;
+  }
+
+  button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+
+  .btn-add {
+    background: #666666;
+    color: #ffffff;
+  }
+
+  .btn-add:hover {
+    background: #777777;
+  }
+
+  .btn-reset {
+    background: #999999;
+    color: #000000;
+  }
+
+  .btn-reset:hover {
+    background: #aaaaaa;
+  }
+
+  .result {
+    margin-top: 30px;
+    background: #111111;
+    padding: 20px;
+    border-radius: 12px;
+    max-height: 600px;
+    overflow-y: auto;
+    font-family: 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    border: 1px solid #333333;    text-align: center;  }
+
+  .result h3 {
+    color: #ffffff;
+    margin-bottom: 15px;
+    font-weight: 400;
+  }
+
+  .result p {
+    margin: 8px 0;
+    color: #cccccc;
+  }
+
+  .result strong {
+    color: #ffffff;
+  }
+  label{
+    width: 100%;
+    text-align: center;
+  }
+  #Out {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffcc00;
+    width: 100%;
+  }
+</style>
+</head>
+<body>
+
+<h2>Solver Darts – Kalkulator wyników</h2>
+<p style="text-align:center; color: #888888; font-style: italic;">Kolejność: <strong style="color: #ffffff;">zewnętrzny → środek</strong></p>
+
+<div class="board" id="board-container">
+  <div class="ring">
+    <label>1 okrąg</label>
+    <select class="color"><option>blue</option><option>green</option><option>red</option><option>orange</option></select>
+    <input type="number" class="val" placeholder="Wartość" value="1">
+  </div>
+  <div class="ring">
+    <label>2 okrąg</label>
+    <select class="color"><option>blue</option><option>green</option><option>red</option><option>orange</option></select>
+    <input type="number" class="val" placeholder="Wartość" value="1">
+  </div>
+  <div class="ring">
+    <label>3 okrąg</label>
+    <select class="color"><option>blue</option><option>green</option><option>red</option><option>orange</option></select>
+    <input type="number" class="val" placeholder="Wartość" value="1">
+  </div>
+  <div class="ring">
+    <label>4 okrąg</label>
+    <select class="color"><option>blue</option><option>green</option><option>red</option><option>orange</option></select>
+    <input type="number" class="val" placeholder="Wartość" value="1">
+  </div>
+</div>
+
+<div style="text-align:center;">
+  <button class="btn-reset" onclick="resetAll()">🗑 Reset</button>
+  <button id="resultBtn" class="btn-add" onclick="updateResult()">Wynik</button>
+  <button id="bullseyeBtn" class="btn-add" onclick="toggleBullseye()">Bullseye: OFF</button>
+</div>
+
+<div id="out" class="result"></div>
+
+<script>
+const dir = "IN→OUT";
+const map = { blue: "/", green: "*", red: "-", orange: "+" };
+let bullseye = false;
+
+// Inicjalizacja koloru select
+function setRingColor(ring) {
+  const color = ring.querySelector('.color').value;
+  let bgColor;
+  switch(color) {
+    case 'blue': bgColor = 'rgba(0,0,255,0.3)'; break;
+    case 'green': bgColor = 'rgba(0,255,0,0.3)'; break;
+    case 'red': bgColor = 'rgba(255,0,0,0.3)'; break;
+    case 'orange': bgColor = 'rgba(255,165,0,0.3)'; break;
+    default: bgColor = 'rgba(51,51,51,0.5)';
+  }
+  ring.style.background = `linear-gradient(145deg, ${bgColor}, rgba(85,85,85,0.5))`;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  document.querySelectorAll('.color').forEach(sel => {
+    sel.addEventListener('change', function() {
+      const ring = this.closest('.ring');
+      setRingColor(ring);
+    });
+    // Ustaw początkowy kolor
+    const ring = sel.closest('.ring');
+    setRingColor(ring);
+  });
+
+  // Automatyczne obliczanie po zmianie - USUNIĘTE, tylko na przycisk
+  // document.querySelectorAll('.color, .val').forEach(el => {
+  //   el.addEventListener('input', updateResult);
+  //   el.addEventListener('change', updateResult);
+  // });
+
+  // Dla Enter w inputach - USUNIĘTE
+  // document.querySelectorAll('.val').forEach(input => {
+  //   input.addEventListener('keydown', function(e) {
+  //     if (e.key === 'Enter') {
+  //       updateResult();
+  //     }
+  //   });
+  // });
+
+  // Początkowy tekst w out
+  document.getElementById("out").innerHTML = "<p>Wprowadź dane tarczy, aby zobaczyć wynik</p>";
+  // updateResult(); // Nie wywołuj na początku
+});
+
+function apply(a, op, b) {
+  if (op === "+") return a + b;
+  if (op === "-") return a - b;
+  if (op === "*") return a * b;
+  if (op === "/") return b !== 0 ? a / b : 0; // Zamiast null, 0
+  return a; // Jeśli op nie rozpoznany, return a
+}
+function resetAll() {
+  document.querySelectorAll(".val").forEach(input => input.value = 0);
+  document.querySelectorAll(".color").forEach(select => select.value = "blue");
+  document.querySelectorAll(".ring").forEach(ring => setRingColor(ring));
+  updateResult();
+}
+
+function updateResult() {
+  const rings = [...document.querySelectorAll(".ring")].reverse();
+  let value = 0;
+  rings.forEach(ring => {
+    const color = ring.querySelector(".color").value;
+    const val = Number(ring.querySelector(".val").value);
+    const op = map[color];
+    switch(op) {
+      case "+": value += val; break;
+      case "-": value -= val; break;
+      case "*": value *= val; break;
+      case "/": if (val !== 0) value /= val; break;
+    }
+  });
+  if (bullseye) value = value * value;
+  document.getElementById("out").innerHTML = `<h1>Wynik: ${value}</h1>`;
+}
+
+function toggleBullseye() {
+  bullseye = !bullseye;
+  document.getElementById('bullseyeBtn').textContent = `Bullseye: ${bullseye ? 'ON' : 'OFF'}`;
+  updateResult(); // Odśwież po zmianie bullseye
+}
+</script>
+
+</body>
+</html>

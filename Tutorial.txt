@@ -1,0 +1,15 @@
+Ogólnie działa to w ten sposób, że okrąg 1 oznacza najbardziej zewnętrzny, a okrąg środkowy oznacza najbardziej wewnętrzny.
+
+Zasada jest już dobrze znana, ale dla przypomnienia:
+Kierunek: IN → OUT (od środka na zewnątrz)
+Oznaczenia:
+blue = /
+green = *
+red = -
+orange = +
+Obliczenia zaczynamy od zera, a następnie dodajemy wartości, idąc od środka na zewnątrz.
+BullsEye to ten kwadracik co na środku tarczy się wyświetla, i oznacza on cały wynik do kwadratu (to robimy na samym końcu)
+
+Odkryłem tę zasadę, używając inny dostępny mój projekt (solver dedukcyjny) , na podstawie którego powstał ten.
+W tamtym projekcie wczytujemy 20 tarcz, po czym zostają tylko dwie reguły. Dzięki temu zamiast 4! możliwych opcji i kombinacji mamy tylko 2.
+

@@ -1,4 +1,4 @@
-Ogólnie działa to w ten sposób, że okrąg 1 oznacza najbardziej zewnętrzny, a okrąg środkowy oznacza najbardziej wewnętrzny.
+Ogólnie działa to w ten sposób, że okrąg 1 oznacza najbardziej zewnętrzny, a okrąg 4 oznacza środkowy czyli najbardziej wewnętrzny.
 
 Zasada jest już dobrze znana, ale dla przypomnienia:
 Kierunek: IN → OUT (od środka na zewnątrz)
